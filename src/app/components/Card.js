@@ -2,7 +2,9 @@ import Link from "next/link";
 import React from "react";
 import { RiArrowRightSLine } from "react-icons/ri";
 
-export default function Card() {
+export default async function Card({articulo}) {
+  console.log(`titulo nuevo: ${articulo.title}`)
+  let excerpt = { __html: articulo.excerpt.rendered }
   return (
     <div className="flex max-h-[590px]">
       <div class="w-full rounded-lg overflow-hidden shadow-lg p-3 bg-white">
@@ -21,9 +23,10 @@ export default function Card() {
             <p className="text-gray-600">Aug 18, 2022</p>
           </div>
 
-          <p class="text-gray-400 text-md text-justify pb-4 border-b-2 border-gray-300">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Voluptatibus quia, nulla!
+          
+
+          <p dangerouslySetInnerHTML={excerpt} className="text-gray-400 text-md text-justify pb-4">
+        
           </p>
 
           <Link
